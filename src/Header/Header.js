@@ -24,10 +24,8 @@ const Header = () => {
             <NavLink className="text-decoration-none  text-secondary me-3" to="/blog">Blog</NavLink>
             </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
+            <NavLink className="text-decoration-none  text-secondary me-3 " to="/login">Log In</NavLink>
+            <NavLink className="text-decoration-none  text-secondary me-3 " to="/register">Register Now</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
