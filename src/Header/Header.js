@@ -1,29 +1,28 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
+import './Header.css'
 
 const Header = () => {
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Link className='text-decoration-none fw-semibold nav-image' to = '/'>
+        <Navbar.Brand><img
+              alt=""
+              src="https://moodle.lingua-institut.com/pluginfile.php/1/theme_mb2mcl/logo/1644584406/logo-mylingua.png"
+              width="100"
+              height="50"
+              className="d-inline-block align-top"
+            />{' '}</Navbar.Brand> </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+            <NavLink className="text-decoration-none  text-secondary me-3" to="/courses">Courses</NavLink>
+            <NavLink className="text-decoration-none  text-secondary me-3" to="/faq">Faq</NavLink>
+            <NavLink className="text-decoration-none  text-secondary me-3" to="/blog">Blog</NavLink>
+            </Nav>
           <Nav>
             <Nav.Link href="#deets">More deets</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
