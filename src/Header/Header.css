@@ -1,0 +1,6 @@
+.hide{
+    display: none;
+}
+.displayPicture:hover + .hide{
+    display: block;
+}
