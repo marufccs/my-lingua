@@ -1,8 +1,9 @@
 import { getAuth, updateProfile } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import app from '../firebase/firebase.init';
 import { AuthContext } from '../UserContext/UserContext';
 import './Register.css'
@@ -10,8 +11,14 @@ import './Register.css'
 const auth = getAuth(app);
 
 const Register = () => {
+    //useNavigate hook
+    const navigate = useNavigate();
+
     // Getting the context
-    const context = useContext(AuthContext)
+    const context = useContext(AuthContext);
+
+    const [error, setError] = useState('');
+    const [isdisabled, setIsDisabled] = useState(true);
 
     const {signUp} = context;
 
@@ -28,8 +35,12 @@ const Register = () => {
             // Signed in 
             const user = userCredential.user;
             console.log(user);
-            toast.success('registered successfully');
-
+            Swal.fire(
+                'Great!',
+                'You have been successfully registered',
+                'success'
+              )
+            navigate('/courses')
             // update profile
         updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
@@ -44,7 +55,7 @@ const Register = () => {
           .catch((error) => {
             const errorMessage = error.message;
             console.error(errorMessage);
-            toast.error(errorMessage);
+            setError(errorMessage);
             // ..
           });
         form.reset();
@@ -52,7 +63,7 @@ const Register = () => {
 
      return (
         <div>
-               <Form onSubmit={handleRegistration} className='container-fluid main-form'>
+               <Form onSubmit={handleRegistration} className='main-form mx-auto'>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Full Name</Form.Label>
         <Form.Control name='name' type="text" placeholder="Enter full name" />
@@ -71,13 +82,14 @@ const Register = () => {
         <Form.Control name='password' type="password" placeholder="Password" required/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="I agree to all of the terms and conditions" />
+        <Form.Check onClick={( ) => setIsDisabled(!isdisabled)} type="checkbox" label="I agree to all of the terms and conditions" />
       </Form.Group>
       <Form.Group>
         <p>Already registered? <Link to = "/login">Log In </Link> </p>
       </Form.Group>
-      <Button variant="info" type="submit">
-        Submit
+      <p className='text-danger'>{error}</p>
+      <Button variant="info" type="submit"  disabled={isdisabled}>
+        Register
       </Button>
     </Form>
         </div>
