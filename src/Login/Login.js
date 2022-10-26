@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
 import { FaGoogle, FaGithub } from "react-icons/fa";
@@ -9,6 +9,9 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/'
 
     const [error, setError] = useState('');
 
@@ -30,7 +33,8 @@ const Login = () => {
                 'You have been logged in successfully',
                 'success'
               )
-            navigate('/courses')
+            navigate(from, {replace: true});
+            form.reset();
             // ...
           })
           .catch((error) => {
@@ -50,7 +54,8 @@ googleSignIn()
     // The signed-in user info.
     const user = result.user;
     console.log(user);
-    navigate('/courses')
+    navigate('/courses');
+    navigate(from, {replace: true});
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -75,7 +80,8 @@ googleSignIn()
         // The signed-in user info.
         const user = result.user;
         console.log(user);
-        navigate('/courses')
+        navigate('/courses');
+        navigate(from, {replace: true});
         // ...
       }).catch((error) => {
         // Handle Errors here.
