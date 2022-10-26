@@ -9,6 +9,7 @@ import Faq from '../Faq/Faq';
 import Home from '../Home/Home';
 import Layout from '../Layout/Layout';
 import Login from '../Login/Login';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Register from '../Register/Register';
 
 
@@ -34,8 +35,10 @@ export const routes = createBrowserRouter([
                 },
                 {
                     path: 'checkout/:id',
-                    element: <Checkout></Checkout>,
-                    loader: ({params}) =>fetch (`http://localhost:5000/checkout/${params.title}`)
+                    element: <PrivateRoute>
+                         <Checkout></Checkout>
+                    </PrivateRoute> ,
+                    loader: ({params}) =>fetch (`http://localhost:5000/courses/${params.id}`)
                 },
                 {
                     path: '/faq',

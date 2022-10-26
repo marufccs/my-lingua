@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import './CourseDetails.css'
 
@@ -22,7 +21,7 @@ const CourseDetails = () => {
         </div>
         <div>
         <div class="d-grid gap-2 col-6 mx-auto mt-3">
-            <Link to={`checkout/${title}`}>
+            <Link  to={`/checkout/${id}`}>
   <button class="btn btn-success" type="button">Get Premium Access Now!</button> </Link>
 </div>
 </div>

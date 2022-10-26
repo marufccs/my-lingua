@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../UserContext/UserContext';
+import './Checkout.css'
 
 const Checkout = () => {
-    const data = useLoaderData();
+    const { user} = useContext(AuthContext);
+ const data = useLoaderData();
+const {title} = data;
     return (
-        <div>
-            <h2>This is the checkout page</h2>
-        </div>
+       <div>
+        <h1 className='text-success mt-5 pt-5'>Congratulations {user?.displayName}!!</h1>
+        <h3>You finally got the premium access of the {title} course!</h3>
+       </div>
     );
 };
 
