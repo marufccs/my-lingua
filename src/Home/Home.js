@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'
+import { BiRightArrow } from "react-icons/bi";
 
 const Home = () => {
     return (
@@ -11,7 +12,7 @@ const Home = () => {
             <p className='first-p'>
                 The world is moving fast. You can't have only one language to communicate with the whole world. Learn a new language and get access to a whole different country!
                 <Link className='text-decoration-none' to ='/courses'>
-                <button type="button" class="btn btn-info d-block start-button mt-2 ">Get Started</button></Link>
+                <button type="button" class="btn btn-info d-block start-button mt-2 ">Get Started <BiRightArrow></BiRightArrow> </button></Link>
             </p>
             
            </div>
