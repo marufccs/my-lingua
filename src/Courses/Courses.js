@@ -11,7 +11,7 @@ const Courses = () => {
                 <ul>
                     {
                         allCourses.map(course => 
-                        <Link className='d-block text-decoration-none text-success mt-3 fs-5'>{course.title}</Link>)
+                        <Link to={`${course.id}`} key={course.id} className='d-block text-decoration-none text-success mt-3 fs-5'>{course.title}</Link>)
                     }
                 </ul>
              </div>

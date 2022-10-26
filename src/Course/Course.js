@@ -13,7 +13,7 @@ const Course = ({allCourses}) => {
       <img className='card-img-top' src={course.img}></img>
       <div className="card-body">
         <h5 className="card-title"> {course.title}</h5>
-        <p className="card-text">{course.details.slice(0,200)+'...'}<Link>Read More</Link></p>
+        <p className="card-text">{course.details.slice(0,200)+'...'}<Link to={`${course.id}`}>Read More</Link></p>
         <div className='d-flex justify-content-between mx-3'>
             <div>
 <span> Duration : {course.duration}</span>
