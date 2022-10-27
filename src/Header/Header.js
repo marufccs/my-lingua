@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../UserContext/UserContext';
 import './Header.css'
 
-const Header = () => {
+const Header = ({themeToggler}) => {
   const {logOut, user} = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -39,6 +39,7 @@ const Header = () => {
             <NavLink className="text-decoration-none  text-secondary me-3" to="/courses">Courses</NavLink>
             <NavLink className="text-decoration-none  text-secondary me-3" to="/faq">Faq</NavLink>
             <NavLink className="text-decoration-none  text-secondary me-3" to="/blog">Blog</NavLink>
+            <NavLink className='text-decoration-none  text-secondary me-3 ' onClick={() => themeToggler()}>Change Theme</NavLink>
             </Nav>
           <Nav>
             {
