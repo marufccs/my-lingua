@@ -11,7 +11,7 @@ const StyledApp = styled.div``;
 
 const Layout = () => {
     
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   const themeToggler = () => {
     theme === "light"? setTheme("dark") : setTheme("light");
