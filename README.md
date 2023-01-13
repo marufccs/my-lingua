@@ -1,6 +1,6 @@
 The name of the site is: My Lingua. 
 Website link : https://my-lingua.firebaseapp.com/
-I've used the React and Express to create it.
+I've used the React, NodeJS and Express to create it.
 Website's features: 
 1. You can explore the courses with details
 2. You can be a premium user by logging in
